@@ -28,7 +28,7 @@
 
 <p align="center">
   <a href="https://t.me/TeamXcoder">
-    <img src="https://telegra.ph/file/58afe55fee5ae99d6901b.jpg" width="600">
+    <img src="https://files.catbox.moe/v0h9w3.jpg" width="600">
   </a>
 </p>
 
@@ -36,13 +36,12 @@
 
 <!-- 🛠 Stylish Badge Layout -->
 <p align="center">
-  <a href="https://t.me/TEAMXXRobot"><img src="https://img.shields.io/badge/Try%20Bot-@TEAMXXRobot-blue?style=for-the-badge&logo=telegram" /></a>
-  <a href="https://t.me/CertifiedCoders"><img src="https://img.shields.io/badge/Join%20Group-@CertifiedCoders-orange?style=for-the-badge&logo=telegram" /></a>
-  <a href="https://t.me/CertifiedCodes"><img src="https://img.shields.io/badge/Updates%20Channel-@CertifiedCodes-purple?style=for-the-badge&logo=telegram" /></a>
-  <a href="https://t.me/CertifiedCoder"><img src="https://img.shields.io/badge/Owner-@CertifiedCoder-red?style=for-the-badge&logo=telegram" /></a>
-  <a href="mailto:rajnishmishraaa1@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-grey?style=for-the-badge&logo=gmail" /></a>
-  <a href="https://instagram.com/rajnishthegreat"><img src="https://img.shields.io/badge/Instagram-Follow-red?style=for-the-badge&logo=instagram" /></a>
-  <a href="https://youtube.com/@rajnisha3"><img src="https://img.shields.io/badge/YouTube-Subscribe-red?style=for-the-badge&logo=youtube" /></a>
+  <a href="https://t.me/TEAMXXRobot"><img src="https://img.shields.io/badge/Try%20Bot-@TomXmusicbot-blue?style=for-the-badge&logo=telegram" /></a>
+  <a href="https://t.me/CertifiedCoders"><img src="https://img.shields.io/badge/Join%20Group-@TeamsXchat-orange?style=for-the-badge&logo=telegram" /></a>
+  <a href="https://t.me/CertifiedCodes"><img src="https://img.shields.io/badge/Updates%20Channel-@TeamXUpdate-purple?style=for-the-badge&logo=telegram" /></a>
+  <a href="https://t.me/CertifiedCoder"><img src="https://img.shields.io/badge/Owner-@TeamXcoder-red?style=for-the-badge&logo=telegram" /></a>
+  <a href="mailto:stradiogamer@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-grey?style=for-the-badge&logo=gmail" /></a>
+  <a href="https://instagram.com/elite.sid"><img src="https://img.shields.io/badge/Instagram-Follow-red?style=for-the-badge&logo=instagram" /></a>
 </p>
 
 ---
@@ -86,8 +85,8 @@ source ~/.bashrc
 nvm install node
 
 # Step 3 - Clone TEAMX Repo
-git clone https://github.com/CertifiedCoders/TEAMXXMusic
-cd TEAMXXMusic
+git clone https://github.com/strad-dev131/TeamXmusic3.0
+cd TeamXmusic3.0
 
 # Step 4 - Install Python packages
 pip3 install -U -r requirements.txt
@@ -119,10 +118,10 @@ sudo bash start
 
 | Platform            | Link                                                                 |
 |---------------------|----------------------------------------------------------------------|
-| 🔑 Generate Session | <a href="https://t.me/CertifiedSessionBot"><img src="https://img.shields.io/badge/Session%20-Generator-orange?style=for-the-badge&logo=heroku" /></a> |
-| 🌍 Heroku Deploy     | <a href="http://dashboard.heroku.com/new?template=https://github.com/CertifiedCoders/TEAMXXMusic"><img src="https://img.shields.io/badge/Deploy%20to-Heroku-purple?style=for-the-badge&logo=heroku" /></a> |
-| ⚡ Render Deploy     | <a href="https://render.com/deploy?repo=https://github.com/CertifiedCoders/TEAMXXMusic"><img src="https://img.shields.io/badge/Deploy%20to-Render-blue?style=for-the-badge&logo=render" /></a> |
-| ☁️ Koyeb Deploy      | <a href="https://app.koyeb.com/deploy?type=git&repository=github.com/CertifiedCoders/TEAMXXMusic"><img src="https://img.shields.io/badge/Deploy%20to-Koyeb-green?style=for-the-badge&logo=koyeb" /></a> |
+| 🔑 Generate Session | <a href="https://t.me/SessionStringZBot"><img src="https://img.shields.io/badge/Session%20-Generator-orange?style=for-the-badge&logo=heroku" /></a> |
+| 🌍 Heroku Deploy     | <a href="http://dashboard.heroku.com/new?template=github.com/strad-dev131/TeamXmusic3.0"><img src="https://img.shields.io/badge/Deploy%20to-Heroku-purple?style=for-the-badge&logo=heroku" /></a> |
+| ⚡ Render Deploy     | <a href="https://render.com/deploy?repo=github.com/strad-dev131/TeamXmusic3.0"><img src="https://img.shields.io/badge/Deploy%20to-Render-blue?style=for-the-badge&logo=render" /></a> |
+| ☁️ Koyeb Deploy      | <a href="https://app.koyeb.com/deploy?type=git&repository=github.com/strad-dev131/TeamXmusic3.0"><img src="https://img.shields.io/badge/Deploy%20to-Koyeb-green?style=for-the-badge&logo=koyeb" /></a> |
 
 ---
 
@@ -131,15 +130,15 @@ sudo bash start
 ## 👥 Contributors, Stars & Forks
 
 <p align="center">
-  <img src="https://img.shields.io/github/contributors/CertifiedCoders/TEAMXXMusic?style=for-the-badge" />
-  <img src="https://img.shields.io/github/stars/CertifiedCoders/TEAMXXMusic?style=for-the-badge" />
-  <img src="https://img.shields.io/github/forks/CertifiedCoders/TEAMXXMusic?style=for-the-badge" />
-  <img src="https://img.shields.io/github/issues/CertifiedCoders/TEAMXXMusic?style=for-the-badge" />
+  <img src="https://img.shields.io/github/contributors/strad-dev131/TeamXmusic3.0?style=for-the-badge" />
+  <img src="https://img.shields.io/github/stars/strad-dev131/TeamXmusic3.0?style=for-the-badge" />
+  <img src="https://img.shields.io/github/forks/strad-dev131/TeamXmusic3.0?style=for-the-badge" />
+  <img src="https://img.shields.io/github/issues/strad-dev131/TeamXmusic3.0?style=for-the-badge" />
 </p>
 
 <p align="center">
-  <a href="https://github.com/CertifiedCoders/TEAMXXMusic/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=CertifiedCoders/TEAMXXMusic" />
+  <a href="https://github.com/strad-dev131/TeamXmusic3.0/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=strad-dev131/TeamXmusic3.0" />
   </a>
 </p>
 
@@ -148,12 +147,11 @@ sudo bash start
 ## 💬 Community & Support
 
 <p align="center">
-  <a href="https://t.me/CertifiedCoders"><img src="https://img.shields.io/badge/Support%20Group-Join-orange?style=for-the-badge&logo=telegram" /></a>
-  <a href="https://t.me/CertifiedCodes"><img src="https://img.shields.io/badge/Channel-Updates-purple?style=for-the-badge&logo=telegram" /></a>
-  <a href="https://t.me/CertifiedCoder"><img src="https://img.shields.io/badge/Owner-Message-red?style=for-the-badge&logo=telegram" /></a>
-  <a href="https://youtube.com/@rajnisha3"><img src="https://img.shields.io/badge/Youtube-Subscribe-red?style=for-the-badge&logo=youtube" /></a>
-  <a href="https://instagram.com/rajnishthegreat"><img src="https://img.shields.io/badge/Instagram-Follow-pink?style=for-the-badge&logo=instagram" /></a>
-  <a href="mailto:rajnishmishraaa1@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-grey?style=for-the-badge&logo=gmail" /></a>
+  <a href="https://t.me/TeamsXchat"><img src="https://img.shields.io/badge/Support%20Group-Join-orange?style=for-the-badge&logo=telegram" /></a>
+  <a href="https://t.me/TeamXUpdate"><img src="https://img.shields.io/badge/Channel-Updates-purple?style=for-the-badge&logo=telegram" /></a>
+  <a href="https://t.me/TeamXcoder"><img src="https://img.shields.io/badge/Owner-Message-red?style=for-the-badge&logo=telegram" /></a>
+  <a href="https://instagram.com/elite.sid"><img src="https://img.shields.io/badge/Instagram-Follow-pink?style=for-the-badge&logo=instagram" /></a>
+  <a href="mailto:stradiogamer@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-grey?style=for-the-badge&logo=gmail" /></a>
 </p>
 
 ---
@@ -165,4 +163,4 @@ sudo bash start
 - <b> _sᴩᴇᴄɪᴀʟ ᴛʜᴀɴᴋs ᴛᴏ [TeamYukki](https://github.com/TeamYukki) ғᴏʀ [YukkiMusicBot](https://github.com/TeamYukki/YukkiMusicBot)_ </b>
 
 
-- <b> _Made with Passion by [Certified Coders](https://github.com/CertifiedCoders)_ </b>
+- <b> _Made with Passion by [strad-dev131](https://github.com/strad-dev131)_ </b>
