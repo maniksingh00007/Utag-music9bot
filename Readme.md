@@ -11,7 +11,7 @@
         <img src="https://files.catbox.moe/r2ga8f.jpg" width="90px" style="border-radius: 50%;" />
       </td>
       <td>
-        <img src="https://readme-typing-svg.herokuapp.com?color=00BFFF&width=600&lines=Hey+There,+This+is+Certified+Coder+%F0%9F%A5%80+%E2%9D%97%EF%B8%8F" />
+        <img src="https://readme-typing-svg.herokuapp.com?color=00BFFF&width=600&lines=Hey+There,+This+is+TeamX+Coder+%F0%9F%A5%80+%E2%9D%97%EF%B8%8F" />
       </td>
     </tr>
   </table>
@@ -19,7 +19,7 @@
 
 <!-- 👁 Visitor Counter -->
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=CertifiedCoders&style=flat-square" />
+  <img src="https://komarev.com/ghpvc/?username=strad-dev131&style=flat-square" />
 </p>
 
 <h1 align="center">
@@ -27,7 +27,7 @@
 </h1>
 
 <p align="center">
-  <a href="https://t.me/CertifiedCoders">
+  <a href="https://t.me/TeamXcoder">
     <img src="https://telegra.ph/file/58afe55fee5ae99d6901b.jpg" width="600">
   </a>
 </p>
