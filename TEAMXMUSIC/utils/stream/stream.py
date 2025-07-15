@@ -6,17 +6,16 @@ from pyrogram.types import InlineKeyboardMarkup
 
 import config
 from TEAMXMUSIC import Carbon, YouTube, app
-from TEAMXMUSIC.core.call import JARVIS
+from TEAMXMUSIC.core.call import Siddu
 from TEAMXMUSIC.misc import db
 from TEAMXMUSIC.utils.database import add_active_video_chat, is_active_chat
 from TEAMXMUSIC.utils.exceptions import AssistantErr
 from TEAMXMUSIC.utils.inline import aq_markup, close_markup, stream_markup
-from TEAMXMUSIC.utils.pastebin import TEAMXBIN
+from TEAMXMUSIC.utils.pastebin import SidduBin
 from TEAMXMUSIC.utils.stream.queue import put_queue, put_queue_index
 from TEAMXMUSIC.utils.thumbnails import get_thumb
-from TEAMXMUSIC.utils.errors import capture_internal_err
 
-@capture_internal_err
+
 async def stream(
     _,
     mystic,
@@ -33,7 +32,7 @@ async def stream(
     if not result:
         return
     if forceplay:
-        await JARVIS.force_stop_stream(chat_id)
+        await Siddu.force_stop_stream(chat_id)
     if streamtype == "playlist":
         msg = f"{_['play_19']}\n\n"
         count = 0
@@ -63,7 +62,7 @@ async def stream(
                     duration_min,
                     user_name,
                     vidid,
-                    user_id,  # user_id passed here
+                    user_id,
                     "video" if video else "audio",
                 )
                 position = len(db.get(chat_id)) - 1
@@ -80,7 +79,7 @@ async def stream(
                     )
                 except:
                     raise AssistantErr(_["play_14"])
-                await JARVIS.join_call(
+                await Siddu.join_call(
                     chat_id,
                     original_chat_id,
                     file_path,
@@ -95,11 +94,11 @@ async def stream(
                     duration_min,
                     user_name,
                     vidid,
-                    user_id,  # user_id passed here
+                    user_id,
                     "video" if video else "audio",
                     forceplay=forceplay,
                 )
-                img = await get_thumb(vidid, user_id)  # Fixed: passing user_id
+                img = await get_thumb(vidid,user_id)
                 button = stream_markup(_, chat_id)
                 run = await app.send_photo(
                     original_chat_id,
@@ -117,7 +116,7 @@ async def stream(
         if count == 0:
             return
         else:
-            link = await TEAMXBIN(msg)
+            link = await SidduBin(msg)
             lines = msg.count("\n")
             if lines >= 17:
                 car = os.linesep.join(msg.split(os.linesep)[:17])
@@ -153,7 +152,7 @@ async def stream(
                 duration_min,
                 user_name,
                 vidid,
-                user_id,  # user_id passed here
+                user_id,
                 "video" if video else "audio",
             )
             position = len(db.get(chat_id)) - 1
@@ -166,7 +165,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await JARVIS.join_call(
+            await Siddu.join_call(
                 chat_id,
                 original_chat_id,
                 file_path,
@@ -181,11 +180,11 @@ async def stream(
                 duration_min,
                 user_name,
                 vidid,
-                user_id,  # user_id passed here
+                user_id,
                 "video" if video else "audio",
                 forceplay=forceplay,
             )
-            img = await get_thumb(vidid, user_id)  # Fixed: passing user_id
+            img = await get_thumb(vidid,user_id)
             button = stream_markup(_, chat_id)
             run = await app.send_photo(
                 original_chat_id,
@@ -213,7 +212,7 @@ async def stream(
                 duration_min,
                 user_name,
                 streamtype,
-                user_id,  # user_id passed here
+                user_id,
                 "audio",
             )
             position = len(db.get(chat_id)) - 1
@@ -226,7 +225,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await JARVIS.join_call(chat_id, original_chat_id, file_path, video=None)
+            await Siddu.join_call(chat_id, original_chat_id, file_path, video=None)
             await put_queue(
                 chat_id,
                 original_chat_id,
@@ -235,7 +234,7 @@ async def stream(
                 duration_min,
                 user_name,
                 streamtype,
-                user_id,  # user_id passed here
+                user_id,
                 "audio",
                 forceplay=forceplay,
             )
@@ -265,7 +264,7 @@ async def stream(
                 duration_min,
                 user_name,
                 streamtype,
-                user_id,  # user_id passed here
+                user_id,
                 "video" if video else "audio",
             )
             position = len(db.get(chat_id)) - 1
@@ -278,7 +277,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await JARVIS.join_call(chat_id, original_chat_id, file_path, video=status)
+            await Siddu.join_call(chat_id, original_chat_id, file_path, video=status)
             await put_queue(
                 chat_id,
                 original_chat_id,
@@ -287,7 +286,7 @@ async def stream(
                 duration_min,
                 user_name,
                 streamtype,
-                user_id,  # user_id passed here
+                user_id,
                 "video" if video else "audio",
                 forceplay=forceplay,
             )
@@ -318,7 +317,7 @@ async def stream(
                 duration_min,
                 user_name,
                 vidid,
-                user_id,  # user_id passed here
+                user_id,
                 "video" if video else "audio",
             )
             position = len(db.get(chat_id)) - 1
@@ -334,7 +333,7 @@ async def stream(
             n, file_path = await YouTube.video(link)
             if n == 0:
                 raise AssistantErr(_["str_3"])
-            await JARVIS.join_call(
+            await Siddu.join_call(
                 chat_id,
                 original_chat_id,
                 file_path,
@@ -349,11 +348,11 @@ async def stream(
                 duration_min,
                 user_name,
                 vidid,
-                user_id,  # user_id passed here
+                user_id,
                 "video" if video else "audio",
                 forceplay=forceplay,
             )
-            img = await get_thumb(vidid, user_id)  # Fixed: passing user_id
+            img = await get_thumb(vidid,user_id)
             button = stream_markup(_, chat_id)
             run = await app.send_photo(
                 original_chat_id,
@@ -392,7 +391,7 @@ async def stream(
         else:
             if not forceplay:
                 db[chat_id] = []
-            await JARVIS.join_call(
+            await Siddu.join_call(
                 chat_id,
                 original_chat_id,
                 link,
