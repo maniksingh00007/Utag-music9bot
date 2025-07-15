@@ -11,11 +11,12 @@ from TEAMXMUSIC.misc import db
 from TEAMXMUSIC.utils.database import add_active_video_chat, is_active_chat
 from TEAMXMUSIC.utils.exceptions import AssistantErr
 from TEAMXMUSIC.utils.inline import aq_markup, close_markup, stream_markup
-from TEAMXMUSIC.utils.pastebin import JARVISBin
+from TEAMXMUSIC.utils.pastebin import TEAMXBIN
 from TEAMXMUSIC.utils.stream.queue import put_queue, put_queue_index
 from TEAMXMUSIC.utils.thumbnails import get_thumb
+from TEAMXMUSIC.utils.errors import capture_internal_err
 
-
+@capture_internal_err
 async def stream(
     _,
     mystic,
@@ -98,7 +99,7 @@ async def stream(
                     "video" if video else "audio",
                     forceplay=forceplay,
                 )
-                img = await get_thumb(vidid,user_id)
+                img = await get_thumb(vidid)
                 button = stream_markup(_, chat_id)
                 run = await app.send_photo(
                     original_chat_id,
@@ -116,7 +117,7 @@ async def stream(
         if count == 0:
             return
         else:
-            link = await JARVISBin(msg)
+            link = await TEAMXBIN(msg)
             lines = msg.count("\n")
             if lines >= 17:
                 car = os.linesep.join(msg.split(os.linesep)[:17])
@@ -184,7 +185,7 @@ async def stream(
                 "video" if video else "audio",
                 forceplay=forceplay,
             )
-            img = await get_thumb(vidid,user_id)
+            img = await get_thumb(vidid)
             button = stream_markup(_, chat_id)
             run = await app.send_photo(
                 original_chat_id,
@@ -352,7 +353,7 @@ async def stream(
                 "video" if video else "audio",
                 forceplay=forceplay,
             )
-            img = await get_thumb(vidid,user_id)
+            img = await get_thumb(vidid)
             button = stream_markup(_, chat_id)
             run = await app.send_photo(
                 original_chat_id,
