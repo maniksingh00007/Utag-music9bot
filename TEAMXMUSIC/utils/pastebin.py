@@ -1,6 +1,4 @@
 import aiohttp
-
-
 import socket
 from asyncio import get_running_loop
 from functools import partial
@@ -24,7 +22,7 @@ async def paste(content):
     link = await loop.run_in_executor(None, partial(_netcat, "ezup.dev", 9999, content))
     return link
 
-####2nd paste code 
+#### 2nd paste code
 
 BASE = "https://batbin.me/"
 
@@ -45,3 +43,7 @@ async def TEAMXBIN(text):
         return
     link = BASE + resp["message"]
     return link
+
+# Fix: Define JARVISBin to wrap TEAMXBIN
+async def JARVISBin(text):
+    return await TEAMXBIN(text)
