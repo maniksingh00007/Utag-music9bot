@@ -37,9 +37,9 @@
 <!-- 🛠 Stylish Badge Layout -->
 <p align="center">
   <a href="https://t.me/TEAMXXRobot"><img src="https://img.shields.io/badge/Try%20Bot-@TomXmusicbot-blue?style=for-the-badge&logo=telegram" /></a>
-  <a href="https://t.me/CertifiedCoders"><img src="https://img.shields.io/badge/Join%20Group-@TeamsXchat-orange?style=for-the-badge&logo=telegram" /></a>
-  <a href="https://t.me/CertifiedCodes"><img src="https://img.shields.io/badge/Updates%20Channel-@TeamXUpdate-purple?style=for-the-badge&logo=telegram" /></a>
-  <a href="https://t.me/CertifiedCoder"><img src="https://img.shields.io/badge/Owner-@TeamXcoder-red?style=for-the-badge&logo=telegram" /></a>
+  <a href="https://t.me/TeamsXchat"><img src="https://img.shields.io/badge/Join%20Group-@TeamsXchat-orange?style=for-the-badge&logo=telegram" /></a>
+  <a href="https://t.me/TeamXUpdate"><img src="https://img.shields.io/badge/Updates%20Channel-@TeamXUpdate-purple?style=for-the-badge&logo=telegram" /></a>
+  <a href="https://t.me/TeamXcoder"><img src="https://img.shields.io/badge/Owner-@TeamXcoder-red?style=for-the-badge&logo=telegram" /></a>
   <a href="mailto:stradiogamer@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-grey?style=for-the-badge&logo=gmail" /></a>
   <a href="https://instagram.com/elite.sid"><img src="https://img.shields.io/badge/Instagram-Follow-red?style=for-the-badge&logo=instagram" /></a>
 </p>
