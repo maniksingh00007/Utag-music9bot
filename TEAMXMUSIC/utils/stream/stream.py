@@ -63,7 +63,7 @@ async def stream(
                     duration_min,
                     user_name,
                     vidid,
-                    user_id,
+                    user_id,  # user_id passed here
                     "video" if video else "audio",
                 )
                 position = len(db.get(chat_id)) - 1
@@ -95,11 +95,11 @@ async def stream(
                     duration_min,
                     user_name,
                     vidid,
-                    user_id,
+                    user_id,  # user_id passed here
                     "video" if video else "audio",
                     forceplay=forceplay,
                 )
-                img = await get_thumb(vidid)
+                img = await get_thumb(vidid, user_id)  # Fixed: passing user_id
                 button = stream_markup(_, chat_id)
                 run = await app.send_photo(
                     original_chat_id,
@@ -153,7 +153,7 @@ async def stream(
                 duration_min,
                 user_name,
                 vidid,
-                user_id,
+                user_id,  # user_id passed here
                 "video" if video else "audio",
             )
             position = len(db.get(chat_id)) - 1
@@ -181,11 +181,11 @@ async def stream(
                 duration_min,
                 user_name,
                 vidid,
-                user_id,
+                user_id,  # user_id passed here
                 "video" if video else "audio",
                 forceplay=forceplay,
             )
-            img = await get_thumb(vidid)
+            img = await get_thumb(vidid, user_id)  # Fixed: passing user_id
             button = stream_markup(_, chat_id)
             run = await app.send_photo(
                 original_chat_id,
@@ -213,7 +213,7 @@ async def stream(
                 duration_min,
                 user_name,
                 streamtype,
-                user_id,
+                user_id,  # user_id passed here
                 "audio",
             )
             position = len(db.get(chat_id)) - 1
@@ -235,7 +235,7 @@ async def stream(
                 duration_min,
                 user_name,
                 streamtype,
-                user_id,
+                user_id,  # user_id passed here
                 "audio",
                 forceplay=forceplay,
             )
@@ -265,7 +265,7 @@ async def stream(
                 duration_min,
                 user_name,
                 streamtype,
-                user_id,
+                user_id,  # user_id passed here
                 "video" if video else "audio",
             )
             position = len(db.get(chat_id)) - 1
@@ -287,7 +287,7 @@ async def stream(
                 duration_min,
                 user_name,
                 streamtype,
-                user_id,
+                user_id,  # user_id passed here
                 "video" if video else "audio",
                 forceplay=forceplay,
             )
@@ -318,7 +318,7 @@ async def stream(
                 duration_min,
                 user_name,
                 vidid,
-                user_id,
+                user_id,  # user_id passed here
                 "video" if video else "audio",
             )
             position = len(db.get(chat_id)) - 1
@@ -349,11 +349,11 @@ async def stream(
                 duration_min,
                 user_name,
                 vidid,
-                user_id,
+                user_id,  # user_id passed here
                 "video" if video else "audio",
                 forceplay=forceplay,
             )
-            img = await get_thumb(vidid)
+            img = await get_thumb(vidid, user_id)  # Fixed: passing user_id
             button = stream_markup(_, chat_id)
             run = await app.send_photo(
                 original_chat_id,
