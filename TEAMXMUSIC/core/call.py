@@ -310,7 +310,7 @@ class Call:
 
             video = True if str(streamtype) == "video" else False
 
-            if "live_" in queued:
+            if queued and "live_" in queued:
                 n, link = await YouTube.video(videoid, True)
                 if n == 0:
                     return await app.send_message(original_chat_id, text=_["call_6"])
