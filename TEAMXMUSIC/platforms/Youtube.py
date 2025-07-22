@@ -433,7 +433,7 @@ class YouTubeAPI:
                 # "http-chunk-size": 10485760,  # 10MB chunks
                 # "buffersize": 32768,
             }
-        ## Method added by sparrow...
+        ## Method added by Elite_Sid..
         # def audio_dl(vid_id):
         #     try:
         #         session = create_session()
