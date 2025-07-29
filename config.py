@@ -16,7 +16,7 @@ OWNER_USERNAME = getenv("OWNER_USERNAME", "TeamXCoder")
 BOT_USERNAME = getenv("BOT_USERNAME", "TeamXmusicBot")
 BOT_NAME = getenv("BOT_NAME", "˹Team ✘ 𝙼ᴜsɪᴄ˼ ♪")
 ASSUSERNAME = getenv("ASSUSERNAME", "musicxteam")
-EVALOP = list(map(int, getenv("EVALOP", "6797202080").split()))
+EVALOP = list(map(int, getenv("EVALOP", "7664877346").split()))
 
 # Vars For API End Pont.
 YTPROXY_URL = getenv("YTPROXY_URL", 'https://tgapi.xbitcode.com') ## E.G https://yt.okflix.
