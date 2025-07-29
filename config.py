@@ -13,7 +13,7 @@ BOT_TOKEN = getenv("BOT_TOKEN")
 
 OWNER_ID = int(getenv("OWNER_ID", 7768779336))
 OWNER_USERNAME = getenv("OWNER_USERNAME", "TeamXCoder")
-BOT_USERNAME = getenv("BOT_USERNAME", "TEAMXRobot")
+BOT_USERNAME = getenv("BOT_USERNAME", "TeamXmusicBot")
 BOT_NAME = getenv("BOT_NAME", "˹Team ✘ 𝙼ᴜsɪᴄ˼ ♪")
 ASSUSERNAME = getenv("ASSUSERNAME", "musicxteam")
 EVALOP = list(map(int, getenv("EVALOP", "6797202080").split()))
