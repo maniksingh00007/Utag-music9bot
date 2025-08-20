@@ -119,7 +119,7 @@ sudo bash start
 | Platform            | Link                                                                 |
 |---------------------|----------------------------------------------------------------------|
 | 🔑 Generate Session | <a href="https://t.me/SessionStringZBot"><img src="https://img.shields.io/badge/Session%20-Generator-orange?style=for-the-badge&logo=heroku" /></a> |
-| 🌍 Heroku Deploy     | <a href="http://dashboard.heroku.com/new?template=github.com/strad-dev131/TeamXmusic3.0"><img src="https://img.shields.io/badge/Deploy%20to-Heroku-purple?style=for-the-badge&logo=heroku" /></a> |
+| 🌍 Heroku Deploy     | <a href="http://dashboard.heroku.com/new?template=https://github.com/strad-dev131/TeamXmusic3.0"><img src="https://img.shields.io/badge/Deploy%20to-Heroku-purple?style=for-the-badge&logo=heroku" /></a> |
 | ⚡ Render Deploy     | <a href="https://render.com/deploy?repo=github.com/strad-dev131/TeamXmusic3.0"><img src="https://img.shields.io/badge/Deploy%20to-Render-blue?style=for-the-badge&logo=render" /></a> |
 | ☁️ Koyeb Deploy      | <a href="https://app.koyeb.com/deploy?type=git&repository=github.com/strad-dev131/TeamXmusic3.0"><img src="https://img.shields.io/badge/Deploy%20to-Koyeb-green?style=for-the-badge&logo=koyeb" /></a> |
 
