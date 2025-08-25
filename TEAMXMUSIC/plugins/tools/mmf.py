@@ -18,6 +18,8 @@ async def mmf(_, message: Message):
     text = message.text.split(None, 1)[1]
     file = await app.download_media(reply_message)
 
+    print(f"File downloaded: {file}")
+
     meme = await drawText(file, text)
     await app.send_document(chat_id, document=meme)
 
@@ -29,11 +31,15 @@ async def drawText(image_path, text):
     # Open the image
     img = Image.open(image_path)
 
-    # Check if the image is an animated webp
+    print(f"Image opened: {image_path}")
+    print(f"Is animated: {img.is_animated}")
+    
     if img.is_animated:
+        print("Processing animated sticker...")
         # Handle animated sticker by processing each frame
         frames = []
-        for frame in ImageSequence.Iterator(img):
+        for idx, frame in enumerate(ImageSequence.Iterator(img)):
+            print(f"Processing frame {idx + 1}...")
             # Copy the frame so it doesn't modify the original
             frame_copy = frame.convert("RGBA")
             frame_copy = apply_text_to_frame(frame_copy, text)
@@ -49,13 +55,16 @@ async def drawText(image_path, text):
             duration=img.info.get('duration', 100),  # Default duration 100ms if not available
             disposal=2,  # To allow transparency between frames
         )
+        print(f"Animated WebP saved: {webp_file}")
 
     else:
+        print("Processing static image...")
         # Handle static image case
         webp_file = "memify_static.webp"
         img = img.convert("RGBA")
         img = apply_text_to_frame(img, text)
         img.save(webp_file, "webp")
+        print(f"Static WebP saved: {webp_file}")
 
     return webp_file
 
@@ -64,7 +73,6 @@ def apply_text_to_frame(frame, text):
     # Get the frame dimensions
     i_width, i_height = frame.size
 
-    # Define font path
     try:
         if os.name == "nt":
             fnt = "arial.ttf"
@@ -136,5 +144,3 @@ def draw_text_with_shadow(draw, text, i_width, current_h, m_font, u_width, u_hei
             font=m_font,
             fill=shadow_color,
         )
-
-
