@@ -22,7 +22,6 @@ async def mmf(_, message: Message):
     await app.send_document(chat_id, document=meme)
 
     await msg.delete()
-
     os.remove(meme)
 
 
@@ -47,7 +46,8 @@ async def drawText(image_path, text):
             save_all=True,
             append_images=frames[1:],
             loop=0,
-            duration=img.info['duration'],
+            duration=img.info.get('duration', 100),  # Default duration 100ms if not available
+            disposal=2,  # To allow transparency between frames
         )
 
     else:
@@ -64,12 +64,16 @@ def apply_text_to_frame(frame, text):
     # Get the frame dimensions
     i_width, i_height = frame.size
 
-    if os.name == "nt":
-        fnt = "arial.ttf"
-    else:
-        fnt = "./TEAMXMUSIC/assets/default.ttf"
-
-    m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
+    # Define font path
+    try:
+        if os.name == "nt":
+            fnt = "arial.ttf"
+        else:
+            fnt = "./TEAMXMUSIC/assets/default.ttf"
+        m_font = ImageFont.truetype(fnt, int((70 / 640) * i_width))
+    except IOError:
+        # Fallback font
+        m_font = ImageFont.load_default()
 
     if ";" in text:
         upper_text, lower_text = text.split(";")
@@ -87,31 +91,10 @@ def apply_text_to_frame(frame, text):
             uwl, uht, uwr, uhb = m_font.getbbox(u_text)
             u_width, u_height = uwr - uwl, uhb - uht
 
-            draw.text(
-                xy=(((i_width - u_width) / 2) - 2, int((current_h / 640) * i_width)),
-                text=u_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-            draw.text(
-                xy=(((i_width - u_width) / 2) + 2, int((current_h / 640) * i_width)),
-                text=u_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-            draw.text(
-                xy=((i_width - u_width) / 2, int(((current_h / 640) * i_width)) - 2),
-                text=u_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-            draw.text(
-                xy=(((i_width - u_width) / 2), int(((current_h / 640) * i_width)) + 2),
-                text=u_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
+            # Draw shadow effect for upper text
+            draw_text_with_shadow(draw, u_text, i_width, current_h, m_font, u_width, u_height, (0, 0, 0))
 
+            # Draw the upper text in white
             draw.text(
                 xy=((i_width - u_width) / 2, int((current_h / 640) * i_width)),
                 text=u_text,
@@ -127,31 +110,10 @@ def apply_text_to_frame(frame, text):
             uwl, uht, uwr, uhb = m_font.getbbox(l_text)
             u_width, u_height = uwr - uwl, uhb - uht
 
-            draw.text(
-                xy=(((i_width - u_width) / 2) - 2, i_height - u_height - int((20 / 640) * i_width)),
-                text=l_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-            draw.text(
-                xy=(((i_width - u_width) / 2) + 2, i_height - u_height - int((20 / 640) * i_width)),
-                text=l_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-            draw.text(
-                xy=((i_width - u_width) / 2, (i_height - u_height - int((20 / 640) * i_width)) - 2),
-                text=l_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-            draw.text(
-                xy=((i_width - u_width) / 2, (i_height - u_height - int((20 / 640) * i_width)) + 2),
-                text=l_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
+            # Draw shadow effect for lower text
+            draw_text_with_shadow(draw, l_text, i_width, i_height - u_height, m_font, u_width, u_height, (0, 0, 0))
 
+            # Draw the lower text in white
             draw.text(
                 xy=((i_width - u_width) / 2, i_height - u_height - int((20 / 640) * i_width)),
                 text=l_text,
@@ -162,3 +124,17 @@ def apply_text_to_frame(frame, text):
             current_h += u_height + pad
 
     return frame
+
+
+def draw_text_with_shadow(draw, text, i_width, current_h, m_font, u_width, u_height, shadow_color):
+    # Draw shadow for the text (offset by a few pixels)
+    shadow_offset = 2
+    for dx, dy in [(-shadow_offset, -shadow_offset), (shadow_offset, -shadow_offset), (-shadow_offset, shadow_offset), (shadow_offset, shadow_offset)]:
+        draw.text(
+            xy=((i_width - u_width) / 2 + dx, current_h + dy),
+            text=text,
+            font=m_font,
+            fill=shadow_color,
+        )
+
+
