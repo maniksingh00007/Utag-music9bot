@@ -1,6 +1,6 @@
 import os
 import textwrap
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageSequence
 from pyrogram import filters
 from pyrogram.types import Message
 from TEAMXMUSIC import app
@@ -27,11 +27,42 @@ async def mmf(_, message: Message):
 
 
 async def drawText(image_path, text):
+    # Open the image
     img = Image.open(image_path)
 
-    os.remove(image_path)
+    # Check if the image is an animated webp
+    if img.is_animated:
+        # Handle animated sticker by processing each frame
+        frames = []
+        for frame in ImageSequence.Iterator(img):
+            # Copy the frame so it doesn't modify the original
+            frame_copy = frame.convert("RGBA")
+            frame_copy = apply_text_to_frame(frame_copy, text)
+            frames.append(frame_copy)
 
-    i_width, i_height = img.size
+        # Save the frames back as an animated webp
+        webp_file = "memify_animated.webp"
+        frames[0].save(
+            webp_file,
+            save_all=True,
+            append_images=frames[1:],
+            loop=0,
+            duration=img.info['duration'],
+        )
+
+    else:
+        # Handle static image case
+        webp_file = "memify_static.webp"
+        img = img.convert("RGBA")
+        img = apply_text_to_frame(img, text)
+        img.save(webp_file, "webp")
+
+    return webp_file
+
+
+def apply_text_to_frame(frame, text):
+    # Get the frame dimensions
+    i_width, i_height = frame.size
 
     if os.name == "nt":
         fnt = "arial.ttf"
@@ -46,8 +77,9 @@ async def drawText(image_path, text):
         upper_text = text
         lower_text = ""
 
-    draw = ImageDraw.Draw(img)
+    draw = ImageDraw.Draw(frame)
 
+    # Apply the text to the upper part
     current_h, pad = 10, 5
 
     if upper_text:
@@ -61,21 +93,18 @@ async def drawText(image_path, text):
                 font=m_font,
                 fill=(0, 0, 0),
             )
-
             draw.text(
                 xy=(((i_width - u_width) / 2) + 2, int((current_h / 640) * i_width)),
                 text=u_text,
                 font=m_font,
                 fill=(0, 0, 0),
             )
-
             draw.text(
                 xy=((i_width - u_width) / 2, int(((current_h / 640) * i_width)) - 2),
                 text=u_text,
                 font=m_font,
                 fill=(0, 0, 0),
             )
-
             draw.text(
                 xy=(((i_width - u_width) / 2), int(((current_h / 640) * i_width)) + 2),
                 text=u_text,
@@ -92,56 +121,39 @@ async def drawText(image_path, text):
 
             current_h += u_height + pad
 
+    # Apply the text to the lower part
     if lower_text:
         for l_text in textwrap.wrap(lower_text, width=15):
             uwl, uht, uwr, uhb = m_font.getbbox(l_text)
             u_width, u_height = uwr - uwl, uhb - uht
 
             draw.text(
-                xy=(
-                    ((i_width - u_width) / 2) - 2,
-                    i_height - u_height - int((20 / 640) * i_width),
-                ),
+                xy=(((i_width - u_width) / 2) - 2, i_height - u_height - int((20 / 640) * i_width)),
+                text=l_text,
+                font=m_font,
+                fill=(0, 0, 0),
+            )
+            draw.text(
+                xy=(((i_width - u_width) / 2) + 2, i_height - u_height - int((20 / 640) * i_width)),
+                text=l_text,
+                font=m_font,
+                fill=(0, 0, 0),
+            )
+            draw.text(
+                xy=((i_width - u_width) / 2, (i_height - u_height - int((20 / 640) * i_width)) - 2),
+                text=l_text,
+                font=m_font,
+                fill=(0, 0, 0),
+            )
+            draw.text(
+                xy=((i_width - u_width) / 2, (i_height - u_height - int((20 / 640) * i_width)) + 2),
                 text=l_text,
                 font=m_font,
                 fill=(0, 0, 0),
             )
 
             draw.text(
-                xy=(
-                    ((i_width - u_width) / 2) + 2,
-                    i_height - u_height - int((20 / 640) * i_width),
-                ),
-                text=l_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-
-            draw.text(
-                xy=(
-                    (i_width - u_width) / 2,
-                    (i_height - u_height - int((20 / 640) * i_width)) - 2,
-                ),
-                text=l_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-
-            draw.text(
-                xy=(
-                    (i_width - u_width) / 2,
-                    (i_height - u_height - int((20 / 640) * i_width)) + 2,
-                ),
-                text=l_text,
-                font=m_font,
-                fill=(0, 0, 0),
-            )
-
-            draw.text(
-                xy=(
-                    (i_width - u_width) / 2,
-                    i_height - u_height - int((20 / 640) * i_width),
-                ),
+                xy=((i_width - u_width) / 2, i_height - u_height - int((20 / 640) * i_width)),
                 text=l_text,
                 font=m_font,
                 fill=(255, 255, 255),
@@ -149,10 +161,4 @@ async def drawText(image_path, text):
 
             current_h += u_height + pad
 
-    image_name = "memify.webp"
-
-    webp_file = os.path.join(image_name)
-
-    img.save(webp_file, "webp")
-
-    return webp_file
+    return frame
