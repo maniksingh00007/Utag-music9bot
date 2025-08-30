@@ -1,8 +1,8 @@
 import random
 from typing import Dict, List, Union
 
-from TEAMXMusic import userbot
-from TEAMXMusic.core.mongo import mongodb
+from TEAMXMUSIC import userbot
+from TEAMXMUSIC.core.mongo import mongodb
 
 authdb = mongodb.adminauth
 authuserdb = mongodb.authuser
@@ -21,9 +21,8 @@ playtypedb = mongodb.playtypedb
 skipdb = mongodb.skipmode
 sudoersdb = mongodb.sudoers
 usersdb = mongodb.tgusersdb
-modeldb = mongodb.model
 
-# Shifting to memory [mongo sucks often]
+
 active = []
 activevideo = []
 assistantdict = {}
@@ -38,7 +37,7 @@ pause = {}
 playmode = {}
 playtype = {}
 skipmode = {}
-
+mute = {}
 
 async def get_assistant_number(chat_id: int) -> str:
     assistant = assistantdict.get(chat_id)
@@ -68,7 +67,7 @@ async def set_assistant_new(chat_id, number):
 
 
 async def set_assistant(chat_id):
-    from TEAMXMusic.core.userbot import assistants
+    from TEAMXMUSIC.core.userbot import assistants
 
     ran_assistant = random.choice(assistants)
     assistantdict[chat_id] = ran_assistant
@@ -82,7 +81,7 @@ async def set_assistant(chat_id):
 
 
 async def get_assistant(chat_id: int) -> str:
-    from TEAMXMusic.core.userbot import assistants
+    from TEAMXMUSIC.core.userbot import assistants
 
     assistant = assistantdict.get(chat_id)
     if not assistant:
@@ -109,7 +108,7 @@ async def get_assistant(chat_id: int) -> str:
 
 
 async def set_calls_assistant(chat_id):
-    from TEAMXMusic.core.userbot import assistants
+    from TEAMXMUSIC.core.userbot import assistants
 
     ran_assistant = random.choice(assistants)
     assistantdict[chat_id] = ran_assistant
@@ -122,7 +121,7 @@ async def set_calls_assistant(chat_id):
 
 
 async def group_assistant(self, chat_id: int) -> int:
-    from TEAMXMusic.core.userbot import assistants
+    from TEAMXMUSIC.core.userbot import assistants
 
     assistant = assistantdict.get(chat_id)
     if not assistant:
@@ -313,6 +312,19 @@ async def music_on(chat_id: int):
 async def music_off(chat_id: int):
     pause[chat_id] = False
 
+async def is_muted(chat_id: int) -> bool:
+    mode = mute.get(chat_id)
+    if not mode:
+        return False
+    return mode
+
+
+async def mute_on(chat_id: int):
+    mute[chat_id] = True
+
+
+async def mute_off(chat_id: int):
+    mute[chat_id] = False
 
 async def get_active_chats() -> list:
     return active
@@ -489,6 +501,11 @@ async def add_served_chat(chat_id: int):
         return
     return await chatsdb.insert_one({"chat_id": chat_id})
 
+# New function to remove served chat
+async def remove_served_chat(chat_id: int):
+    if await is_served_chat(chat_id):
+        await chatsdb.delete_one({"chat_id": chat_id})
+    
 
 async def blacklisted_chats() -> list:
     chats_list = []
@@ -645,23 +662,3 @@ async def remove_banned_user(user_id: int):
     if not is_gbanned:
         return
     return await blockeddb.delete_one({"user_id": user_id})
-
-
-async def get_model_settings() -> dict:
-    settings = await modeldb.find_one({"model": "settings"})
-    if not settings:
-        return {"tts": "athena", "image": "stable-diffusion"}
-    return settings["settings"]
-
-
-async def update_model_settings(settings: dict) -> bool:
-    current_settings = await get_model_settings()
-
-    updated_settings = {**current_settings, **settings}
-
-    await modeldb.update_one(
-        {"model": "settings"},
-        {"$set": {"settings": updated_settings}},
-        upsert=True
-    )
-    return True
