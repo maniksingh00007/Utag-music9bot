@@ -5,6 +5,7 @@ asyncio
 bing_image_downloader
 bs4
 deepai
+dnspython
 edge-tts
 ffmpeg-python
 future
@@ -12,6 +13,7 @@ gitpython
 google-api-python-client
 gpytranslate
 gtts
+hachoir
 heroku3
 httpx[http2]==0.28.1
 kurigram==2.2.9
@@ -25,6 +27,7 @@ psutil
 ntgcalls==2.0.6
 py-tgcalls==2.2.6
 pycryptodome
+pykeyboard
 pydub
 pyfiglet
 pyshorteners
@@ -37,8 +40,9 @@ speedtest-cli
 SpeechRecognition
 spotipy
 telegraph
-tgcrypto
+tgcrypto;sys_platform != "win32"
 unidecode
+uvloop;sys_platform != "win32"
 wget
 yt-dlp==2025.8.22
 git+https://github.com/CertifiedCoders/youtube-search-python
