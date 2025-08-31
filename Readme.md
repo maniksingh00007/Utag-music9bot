@@ -160,7 +160,7 @@ sudo bash start
   <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 </p>
 
-- <b> _sᴩᴇᴄɪᴀʟ ᴛʜᴀɴᴋs ᴛᴏ [TeamYukki](https://github.com/TeamYukki) ғᴏʀ [YukkiMusicBot](https://github.com/TeamYukki/YukkiMusicBot)_ </b>
-
+- <b> _sᴩᴇᴄɪᴀʟ ᴛʜᴀɴᴋs ᴛᴏ [TeamYukki](https://github.com/TeamYukki) ғᴏʀ [YukkiMusicBot](https://github.com/maniksingh00007/Utag-music9bot)_ </b>
+:
 
 - <b> _Made with Passion by [strad-dev131](https://github.com/strad-dev131)_ </b>
